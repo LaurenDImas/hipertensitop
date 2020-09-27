@@ -37,7 +37,7 @@
   </div>
   
   <div class="uk-center" style="margin-top: 30px;margin-left: auto;margin-right: auto;display: block">
-      <a href="index.html" class="accent-color" style="text-decoration: underline">Kembali ke home</a>
+      <a href="<?=  $this->Url->build(['controller'=>'Pages','action'=>'index'])  ?>" class="accent-color" style="text-decoration: underline">Kembali ke home</a>
   </div>
   <!-- Jika Normal tinggi
   <div class="uk-card uk-card-default uk-card-body uk-border-rounded bg-gradient-noshadow-normal-tinggi uk-animation-scale-down delay-animation"
