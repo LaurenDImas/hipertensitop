@@ -19,7 +19,7 @@
                     <div class="row match-height">
 
                         <div class="col-xl-3 col-sm-3 col-12">
-                            <div class="card bg-biru">
+                            <div class="card" style="background-color:#27ae60">
                                 <div class="card-content">
                                     <!-- <img class="card-img-top img-fluid" src="assets/images/samples/pages/content-img-3.jpg"
                                         alt="Card image cap"> -->
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-xl-3 col-sm-3 col-12">
-                            <div class="card bg-biru">
+                            <div class="card" style="background-color:#f1c40f">
                                 <div class="card-content">
                                     <!-- <img class="card-img-top img-fluid" src="assets/images/samples/pages/content-img-2.jpg"
                                         alt="Card image cap" /> -->
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="col-xl-3 col-sm-3 col-12">
-                            <div class="card bg-biru">
+                            <div class="card" style="background-color:#e67e22">
                                 <div class="card-content">
                                     <!-- <img class="card-img-top img-fluid" src="assets/images/samples/pages/content-img-2.jpg"
                                         alt="Card image cap" /> -->
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="col-xl-3 col-sm-3 col-12">
-                            <div class="card bg-biru">
+                            <div class="card" style="background-color:#e74c3c">
                                 <div class="card-content">
                                     <!-- <img class="card-img-top img-fluid" src="assets/images/samples/pages/content-img-2.jpg"
                                         alt="Card image cap" /> -->
@@ -245,9 +245,9 @@
          categoryAxis.dataFields.category = "country";
         categoryAxis.renderer.grid.template.location = 0;
         categoryAxis.renderer.minGridDistance = 30;
-        categoryAxis.renderer.labels.template.horizontalCenter = "right";
+        categoryAxis.renderer.labels.template.horizontalCenter = "middle";
         categoryAxis.renderer.labels.template.verticalCenter = "middle";
-        categoryAxis.renderer.labels.template.rotation = 270;
+        // categoryAxis.renderer.labels.template.rotation = 270;
         categoryAxis.tooltip.disabled = true;
         categoryAxis.renderer.minHeight = 110;
             
