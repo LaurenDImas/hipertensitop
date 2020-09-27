@@ -11,6 +11,11 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        // dd($this->Auth->user('role_id'));
+        if(!in_array($this->Auth->user('role_id'), [1])){
+        // dd($this->Auth->user('role_id'));
+            return $this->redirect(['controller'=>'Dashboard', 'action'=>'index']);
+        }
         $this->Auth->allow(['logout','login']);
     }
 

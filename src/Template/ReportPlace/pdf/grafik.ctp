@@ -49,33 +49,20 @@
 		chart.numberFormatter.numberFormat = "#.0";
 
 		// Add data
-		chart.data = [ {
-			  "year": "Normal",
-			  "klinik": 200,
-			  "mandiri": 2.5,
-			  "posbindu": 2.5,
-              "color": '#e74c3c'
-			}, {
-			  "year": "Normal Tinggi",
-			  "klinik": 200,
-			  "mandiri":1,
-			  "posbindu": 2.5,
-              "color": '#e74c3c'
-			}, {
-			  "year": "Hipertensi Grade 1",
-			  "klinik": 200,
-			  "mandiri": 2.9,
-			  "posbindu": 2.5,
-              "color": '#e74c3c'
-			} , {
-			  "year": "Hipertensi Grade 2",
-			  "klinik": 200,
-			  "mandiri": 2.9,
-			  "posbindu": 2.5,
-              "color": '#e74c3c'
-			} 
-		];
+		chart.data = [ 
 
+            <?php foreach ($results as $r): ?>
+				{
+				  "year": "<?=  $r['nama'] ?>",
+				  "hasil_k": "<?=  ($r['hasil_k']) ?>",
+				  "hasil_m": "<?=  ($r['hasil_m']) ?>",
+				  "hasil_p": "<?=  ($r['hasil_p']) ?>",
+	              "color": '#e74c3c'
+				},
+			<?php endforeach;?> 
+		];
+chart.numberFormatter.numberFormat = "#.";
+		
 		// Create axes
 		var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 		categoryAxis.dataFields.category = "year";
@@ -135,8 +122,8 @@
         
         title.fontSize = 25;
         title.marginBottom = 30;
-		createSeries("klinik", "Klinik", false);
-		createSeries("mandiri", "Mandiri", true);
-		createSeries("posbindu", "Posbindu", true);
+		createSeries("hasil_k", "Klinik", false);
+		createSeries("hasil_m", "Mandiri", true);
+		createSeries("hasil_p", "Posbindu", true);
    
 </script>

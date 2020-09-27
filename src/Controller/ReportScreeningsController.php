@@ -18,6 +18,11 @@ class ReportScreeningsController  extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        
+        if(!in_array($this->Auth->user('role_id'), [1,2])){
+            // dd($this->Auth->user('role_id'));
+            return $this->redirect(['controller'=>'Dashboard', 'action'=>'index']);
+        }
         // $this->Auth->allow(['index']);
     }
 

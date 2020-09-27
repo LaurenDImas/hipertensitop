@@ -35,7 +35,7 @@
 		      am4core.color("#48dbfb"),
 		      am4core.color("#5f27cd"),
 		      am4core.color("#009432"),
-		      am4core.color("#ee5253"),
+		      am4core.color("#DF3520"),
 		      am4core.color("#64297B"),
 		      am4core.color("#232555")
 		    ];
@@ -46,50 +46,43 @@
 
 		// Create chart instance
 		var chart = am4core.create("chartdiv", am4charts.XYChart3D);
-		chart.numberFormatter.numberFormat = "#.0";
-
+		chart.numberFormatter.numberFormat = "#.";
+		
 		// Add data
-		chart.data = [ {
-			  "year": "Normal",
-			  "l_15": 20,
-			  "p_15": 2.5,
-			  "l_30": 2.5,
-			  "p_30": 2.5,
-              "color": '#e74c3c'
-			}, {
-			  "year": "Normal Tinggi",
-			  "l_15": 200,
-			  "p_15":1,
-			  "l_30": 2.5,
-			  "p_30": 2.5,
-              "color": '#e74c3c'
-			}, {
-			  "year": "Hipertensi Grade 1",
-			  "l_15": 200,
-			  "p_15": 2.9,
-			  "l_30": 2.5,
-			  "p_30": 2.5,
-              "color": '#e74c3c'
-			} , {
-			  "year": "Hipertensi Grade 2",
-			  "l_15": 200,
-			  "p_15": 2.9,
-			  "l_30": 2.5,
-			  "p_30": 2.5,
-              "color": '#e74c3c'
-			} 
+		chart.data = [ 
+			 <?php 
+			 	$arr=["Usia 15-30 tahun | Usia > 30 Tahun",
+					"Usia 15-30 tahun   | Usia > 30 Tahun ",
+					"Usia 15-30 tahun | Usia > 30 Tahun ",
+					"Usia 15-30 tahun | Usia > 30 Tahun   "];
+			  	foreach ($results as $key => $r): ?>
+				{
+				  	"year": "<?= $r['nama']?>",
+				  	"category2": "<?= $arr[$key] ?>",
+				  	"hasil_1": "<?= $r['hasil_1'] ?>",
+				  	"hasil_2": "<?= $r['hasil_2'] ?>",
+				  	"hasil_3": "<?= $r['hasil_3'] ?>",
+				  	"hasil_4": "<?= $r['hasil_4'] ?>",
+				},
+        	<?php endforeach;?>
 		];
 
 		// Create axes
-		// var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-		// categoryAxis.dataFields.category = "year";
-		// categoryAxis.renderer.grid.template.location = 0;
-		// categoryAxis.renderer.minGridDistance = 20;
-		// categoryAxis.renderer.inside = true;
-		// categoryAxis.renderer.labels.template.valign = "top";
-		// categoryAxis.renderer.labels.template.fontSize = 20;
-		// categoryAxis.renderer.cellStartLocation = 0.1;
-		// categoryAxis.renderer.cellEndLocation = 0.9;
+		var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+		categoryAxis.dataFields.category = "year";
+		categoryAxis.renderer.grid.template.location = 0;
+		categoryAxis.renderer.minGridDistance = 20;
+		categoryAxis.renderer.inside = true;
+		categoryAxis.renderer.labels.template.valign = "top";
+		categoryAxis.renderer.labels.template.fontSize = 20;
+		categoryAxis.renderer.cellStartLocation = 0.1;
+		categoryAxis.renderer.cellEndLocation = 0.9;
+		categoryAxis.renderer.labels.template.dy = -65;
+
+		var categoryAxis2 = chart.xAxes.push(new am4charts.CategoryAxis());
+		categoryAxis2.dataFields.category = "category2";
+		categoryAxis2.renderer.grid.template.location = 0;
+		categoryAxis2.renderer.labels.template.dy = 35;
 
 		var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 		valueAxis.min = 0;
@@ -114,14 +107,11 @@
 
 
             var valueLabel = series.bullets.push(new am4charts.LabelBullet());
-            valueLabel.label.text = "{valueY}";
+            valueLabel.label.text = "[bold]{valueY}";
             valueLabel.label.fill = am4core.color("white");
             valueLabel.label.fontSize = 16;
             valueLabel.locationY = 0;
 		  	valueLabel.dy = -7;
-
-
-           
 
 		}
 
@@ -142,9 +132,9 @@
         
         title.fontSize = 25;
         title.marginBottom = 30;
-		createSeries("l_15", "Pria", false);
-		createSeries("p_15", "Wanita", true);
-		createSeries("l_30", "Pria", true);
-		createSeries("p_30", "Wanita", true);
+		createSeries("hasil_1", "Pria", false);
+		createSeries("hasil_2", "Wanita", true);
+		createSeries("hasil_3", "Pria", true);
+		createSeries("hasil_4", "Wanita", true);
    
 </script>

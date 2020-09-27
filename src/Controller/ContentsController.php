@@ -16,12 +16,10 @@ class ContentsController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        if($this->Auth->user('role_id') == 2) {
-            
-            $this->Auth->allow();
-        }elseif($this->Auth->user('role_id') == 1){
-            
-            $this->Auth->allow(['add']);
+        
+        if(!in_array($this->Auth->user('role_id'), [1,3])){
+            // dd($this->Auth->user('role_id'));
+            return $this->redirect(['controller'=>'Dashboard', 'action'=>'index']);
         }
        
     }

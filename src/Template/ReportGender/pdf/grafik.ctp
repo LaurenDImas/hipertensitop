@@ -49,30 +49,19 @@
 		chart.numberFormatter.numberFormat = "#.0";
 
 		// Add data
-		chart.data = [ {
-			  "year": "Normal",
-			  "pria": 2000,
-			  "wanita": 2.5,
-              "color": '#e74c3c'
-			}, {
-			  "year": "Normal Tinggi",
-			  "pria": 200,
-			  "wanita":1,
-              "color": '#e74c3c'
-			}, {
-			  "year": "Hipertensi Grade 1",
-			  "pria": 200,
-			  "wanita": 2.9,
-              "color": '#e74c3c'
-			} , {
-			  "year": "Hipertensi Grade 2",
-			  "pria": 200,
-			  "wanita": 2.9,
-              "color": '#e74c3c'
-			} 
+		chart.data = [ 
+			<?php foreach ($results as $r): ?>
+				{
+				  "year": "<?=  $r['nama'] ?>",
+				  "pria": "<?=  ($r['hasil_l']) ?>",
+				  "wanita": "<?=  ($r['hasil_p']) ?>",
+	              "color": '#e74c3c'
+				}, 
+			<?php endforeach;?> 
+
 		];
 
-		// Create axes
+	chart.numberFormatter.numberFormat = "#.";		// Create axes
 		var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 		categoryAxis.dataFields.category = "year";
 		categoryAxis.renderer.grid.template.location = 0;
