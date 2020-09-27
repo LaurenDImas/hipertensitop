@@ -11,12 +11,14 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        // dd($this->Auth->user('role_id'));
-        if(!in_array($this->Auth->user('role_id'), [1])){
-        // dd($this->Auth->user('role_id'));
-            return $this->redirect(['controller'=>'Dashboard', 'action'=>'index']);
+        if(!empty($this->Auth->user())){
+            if(!in_array($this->Auth->user('role_id'), [1])){
+                // dd($this->Auth->user('role_id'));
+                return $this->redirect(['controller'=>'Dashboard', 'action'=>'index']);
+            }
+        }else{
+            $this->Auth->allow(['logout','login']);
         }
-        $this->Auth->allow(['logout','login']);
     }
 
     public function welcome()
