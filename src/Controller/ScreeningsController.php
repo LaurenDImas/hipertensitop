@@ -69,7 +69,7 @@ class ScreeningsController extends AppController
                 $data['created_by'] = $this->Auth->user('id');
             }
             $screening = $this->Screenings->patchEntity($screening, $data);
-            dd($screening);
+            // dd($screening);
             if(!$this->request->is('ajax')){
                 if ($this->Screenings->save($screening)) {
                         $this->Flash->success(__('The screening has been saved.'));

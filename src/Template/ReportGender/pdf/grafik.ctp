@@ -60,8 +60,8 @@
 			<?php endforeach;?> 
 
 		];
-
-	chart.numberFormatter.numberFormat = "#.";		// Create axes
+		chart.numberFormatter.numberFormat = "#.";
+			// Create axes
 		var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 		categoryAxis.dataFields.category = "year";
 		categoryAxis.renderer.grid.template.location = 0;

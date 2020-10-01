@@ -207,20 +207,43 @@
         function calTD(){
             var sistol=$('#sistol').val();
             var diastol=$('#diastol').val();
-            console.log(sistol)
             if (sistol < 130 && diastol < 85) {
                 $('#td').val(1); //normal
-            }else if((sistol >= 130 && sistol <= 139) || (diastol >= 85 && diastol <= 89)) {
-                $('#td').val(2); //normal tingi
-            }else if((sistol >= 140 && sistol <= 159) || (diastol >= 90 && diastol <= 99)) {
-                $('#td').val(3); // hipertensi 1
-            }else if(sistol >= 160 || diastol >= 100) {
-                $('#td').val(4); // hipertensi 2
+            }else if (sistol < 130 && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(2); //normal
+            }else if (sistol < 130 && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(3); //normal
+            }else if (sistol < 130 && (diastol >= 100)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && diastol < 85) {
+                $('#td').val(2); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(2); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && (diastol >= 100)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && diastol < 85) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && (diastol >= 100)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && diastol < 85) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && (diastol >= 100)) {
+                $('#td').val(4); //normal
             }else{
-                $('#td').val(0);
+                $('#td').val(0); //normal
             }
         }
-         $(document).on('input','#diastol,#sistol',function(){
+         $(document).on('input','#sistol,#diastol',function(){
             calTD();
         });
          calTD();

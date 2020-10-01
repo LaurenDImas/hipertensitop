@@ -94,7 +94,7 @@
                     <div class="uk-inline uk-width-1-1" style="margin-top: 30px;">
                         <label class="uk-form-label"
                                style="position: relative;bottom: 10px;">Nomor Handphone</label>
-                        <input class="uk-input form-looks font-light" placeholder="No HP anda"
+                        <input class="uk-input form-looks font-light decimal" placeholder="No HP anda"
                                style="height: 50px;font-size: 14px;" name="telp" type="text" required autocomplete="off">
                     </div>
                     <div class="uk-inline uk-width-1-1" style="margin-top: 30px;">
@@ -106,9 +106,9 @@
                     <div class="uk-inline uk-width-1-1" style="margin-top: 30px;">
                         <label class="uk-form-label"
                                style="position: relative;bottom: 10px;">Jenis Kelamin</label>
-                        <select class="uk-select form-looks font-light" name="gender"
+                        <select class="uk-select form-looks font-light" required name="gender"
                                 style="height: 50px;font-size: 14px;">
-                            <option selected disabled>Pilih jenis kelamin</option>
+                            <option value="">Pilih jenis kelamin</option>
                             <option value="1">Pria</option>
                             <option value="2">Wanita</option>
                         </select>
@@ -116,9 +116,9 @@
                     <div class="uk-inline uk-width-1-1" style="margin-top: 30px;">
                         <label class="uk-form-label"
                                style="position: relative;bottom: 10px;">Tempat pengukuran Tekanan Darah</label>
-                        <select class="uk-select form-looks font-light" id="tempat-pengukuran-td" onchange="showComboLuar()" name="tempat_pengukuran_td"
+                        <select class="uk-select form-looks font-light" required id="tempat-pengukuran-td" onchange="showComboLuar()" name="tempat_pengukuran_td"
                                 style="height: 50px;font-size: 14px;">
-                            <option selected disabled>Pilih tempat</option>
+                            <option value="">Pilih tempat</option>
                             <option value="1">Klinik</option>
                             <option value="2">Luar Klinik</option>
                         </select>
@@ -126,9 +126,9 @@
                     <div class="uk-inline uk-width-1-1 luar_klinik" style="margin-top: 30px;">
                         <label class="uk-form-label"
                                style="position: relative;bottom: 10px;">Tempat luar klinik</label>
-                        <select class="uk-select form-looks font-light" id="luar-klinik" name="luar_klinik"
+                        <select class="uk-select form-looks font-light" required id="luar-klinik" name="luar_klinik"
                                 style="height: 50px;font-size: 14px;">
-                            <option selected disabled>Pilih tempat</option>
+                            <option value="">Pilih tempat</option>
                             <option value="1">Mandiri</option>
                             <option value="2">Posbindu</option>
                         </select>
@@ -192,20 +192,44 @@
             
             if (sistol < 130 && diastol < 85) {
                 $('#td').val(1); //normal
-            }else if((sistol >= 130 && sistol <= 139) || (diastol >= 85 && diastol <= 89)) {
-                $('#td').val(2); //normal tingi
-            }else if((sistol >= 140 && sistol <= 159) || (diastol >= 90 && diastol <= 99)) {
-                $('#td').val(3); // hipertensi 1
-            }else if(sistol >= 160 || diastol >= 100) {
-                $('#td').val(4); // hipertensi 2
+            }else if (sistol < 130 && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(2); //normal
+            }else if (sistol < 130 && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(3); //normal
+            }else if (sistol < 130 && (diastol >= 100)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && diastol < 85) {
+                $('#td').val(2); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(2); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 130 && sistol <= 139) && (diastol >= 100)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && diastol < 85) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(3); //normal
+            }else if ((sistol >= 140 && sistol <= 159) && (diastol >= 100)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && diastol < 85) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && (diastol >= 85 && diastol <= 89)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && (diastol >= 90 && diastol <= 99)) {
+                $('#td').val(4); //normal
+            }else if ((sistol >= 160) && (diastol >= 100)) {
+                $('#td').val(4); //normal
             }else{
-                $('#td').val(0);
+                $('#td').val(0); //normal
             }
         }
-        $(document).on('input','#diastol,#sistol',function(){
+         $(document).on('input','#sistol,#diastol',function(){
             calTD();
         });
-    calTD();
+         calTD();
 
 
     var form1 = $(".kt-form");
