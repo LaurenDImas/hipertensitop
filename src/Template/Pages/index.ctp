@@ -99,7 +99,7 @@
                     </div>
                     <div class="uk-inline uk-width-1-1" style="margin-top: 30px;">
                         <label class="uk-form-label"
-                               style="position: relative;bottom: 10px;">Tanggal Lahir (bulan-hari-tahun, 12-27-1998) </label>
+                               style="position: relative;bottom: 10px;">Tanggal Lahir (bulan-tanggal-tahun, 12-27-1998) </label>
                         <input class="uk-input form-looks font-light" id="date" placeholder="Tanggal Lahir (bulan-hari-tahun) contoh = 12-27-1998"
                                style="height: 50px;font-size: 14px;" name="birthdate" type="date"  required autocomplete="off" >
                     </div>
