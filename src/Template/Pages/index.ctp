@@ -1,4 +1,17 @@
-
+<style type="text/css">
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+</style>
 <div class="uk-container uk-margin-large-bottom" style="margin-top: 200px;">
     <div class="uk-card uk-card-default uk-card-body uk-border-rounded bg-gradient-noshadow uk-animation-scale-down delay-animation"
          style="border-radius: 20px;">
